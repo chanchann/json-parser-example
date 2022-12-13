@@ -137,5 +137,6 @@ json_value_t *create_test_arr() {
   json_array_t *arr = json_value_array(json);
   json_array_append(arr, JSON_VALUE_NULL);
   json_array_append(arr, JSON_VALUE_STRING, "123");
+  json_array_append(arr, JSON_VALUE_FALSE);
   return json;
 }

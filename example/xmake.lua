@@ -1,26 +1,19 @@
-target("basic_test")
-    add_files("basic_test.c")
-    add_deps("json_parser")
+function all_tests()
+    local res = {}
+    for _, x in ipairs(os.files("**.c")) do
+        local item = {}
+        local s = path.filename(x)
+        table.insert(item, s:sub(1, #s - 2)) -- target
+        table.insert(item, path.relative(x, ".")) -- source
+        table.insert(res, item)
+    end
+    return res
+end
 
-target("speed_test")
-    add_files("speed_test.c")
-    add_deps("json_parser")
+add_deps("json_parser")
 
-target("01_create")
-    add_files("01_create.c")
-    add_deps("json_parser")
-
-target("02_copy")
-    add_files("02_copy.c")
-    add_deps("json_parser")
-
-target("03_move")
-    add_files("03_move.c")
-    add_deps("json_parser")
-
-target("04_find")
-    add_files("04_find.c")
-    add_deps("json_parser")
-
-
-
+for _, test in ipairs(all_tests()) do
+    target(test[1])
+    set_kind("binary")
+    add_files(test[2])
+end
