@@ -14,6 +14,17 @@ void obj_iter() {
   }
    */
   print_json_value(json, 0);
+
+  json_object_t *obj = json_value_object(json);
+  const char *key = NULL;
+  const json_value_t *obj_cursor = NULL;
+
+  printf("\n---------- iterate : ------------\n");
+  json_object_for_each(key, obj_cursor, obj) {
+    printf("%s : \t", key);
+    print_json_value(obj_cursor, 0);
+    printf("\n");
+  }
 }
 
 void obj_iter_reverse() {
@@ -35,29 +46,12 @@ void obj_iter_reverse() {
   const char *key = NULL;
   const json_value_t *obj_cursor = NULL;
 
-  printf("\n---------- 3rd ele ------------\n");
-  key = json_object_prev_name(key, obj);
-  obj_cursor = json_object_prev_value(obj_cursor, obj);
-
-  printf("key : %s\t", key);
-  printf("val : ");
-  print_json_value(obj_cursor, 0);
-
-  printf("\n---------- 2nd ele ------------\n");
-  key = json_object_prev_name(key, obj);
-  obj_cursor = json_object_prev_value(obj_cursor, obj);
-
-  printf("key : %s\t", key);
-  printf("val : ");
-  print_json_value(obj_cursor, 0);
-
-  printf("\n---------- 1st ele ------------\n");
-  key = json_object_prev_name(key, obj);
-  obj_cursor = json_object_prev_value(obj_cursor, obj);
-
-  printf("key : %s\t", key);
-  printf("val : ");
-  print_json_value(obj_cursor, 0);
+  printf("\n---------- iterate reverse: ------------\n");
+  json_object_for_each_prev(key, obj_cursor, obj) {
+    printf("%s : \t", key);
+    print_json_value(obj_cursor, 0);
+    printf("\n");
+  }
 }
 
 int main() {
