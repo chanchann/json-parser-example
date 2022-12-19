@@ -18,10 +18,12 @@ void remove_obj() {
   // find the val you want to remove
   json_object_t *obj = json_value_object(json);
   const json_value_t *find_val = json_object_find("1111", obj);
-  json_object_remove(find_val, obj);
+  json_value_t *remove_val = json_object_remove(find_val, obj);
+  json_value_destroy(remove_val); // don't forget
 
   printf("\n---------- after remove ------------\n");
   print_json_value(json, 0);
+  json_value_destroy(json);
 }
 
 void remove_arr() {
@@ -40,10 +42,12 @@ void remove_arr() {
 
   // move to the 2rd ele and remove it
   arr_cursor = json_array_next_value(arr_cursor, arr);
-  json_array_remove(arr_cursor, arr);
+  json_value_t *remove_val = json_array_remove(arr_cursor, arr);
+  json_value_destroy(remove_val); // don't forget
 
   printf("\n---------- after remove ------------\n");
   print_json_value(json, 0);
+  json_value_destroy(json);
 }
 
 int main() {

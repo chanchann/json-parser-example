@@ -25,6 +25,7 @@ void obj_iter() {
     print_json_value(obj_cursor, 0);
     printf("\n");
   }
+  json_value_destroy(json);
 }
 
 void obj_iter_reverse() {
@@ -52,6 +53,7 @@ void obj_iter_reverse() {
     print_json_value(obj_cursor, 0);
     printf("\n");
   }
+  json_value_destroy(json);
 }
 
 int main() {

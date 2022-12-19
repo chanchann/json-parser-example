@@ -11,6 +11,8 @@ void arr_iter() {
     print_json_value(arr_cursor, 0);
     printf("\n");
   }
+
+  json_value_destroy(json);
 }
 
 void arr_iter_reverse() {
@@ -24,6 +26,7 @@ void arr_iter_reverse() {
     print_json_value(arr_cursor, 0);
     printf("\n");
   }
+  json_value_destroy(json);
 }
 
 int main() {

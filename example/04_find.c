@@ -10,6 +10,7 @@ void object_find() {
 
   printf("\n---------- find value ------------\n");
   print_json_value(find_val, 0);
+  json_value_destroy(json);
 }
 
 int main() { object_find(); }
