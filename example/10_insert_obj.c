@@ -29,6 +29,7 @@ void obj_insert() {
 
   printf("\n---------- after insert ------------\n");
   print_json_value(json, 0);
+  json_value_destroy(json);
 }
 
 int main() {

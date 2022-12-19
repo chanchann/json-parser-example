@@ -17,6 +17,7 @@ void arr_insert() {
   json_array_insert_after(arr_cursor, arr, JSON_VALUE_STRING, "after");
   printf("\n---------- after insert ------------\n");
   print_json_value(json, 0);
+  json_value_destroy(json);
 }
 
 int main() {

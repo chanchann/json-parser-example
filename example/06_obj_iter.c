@@ -42,6 +42,7 @@ void obj_iter() {
   printf("key : %s\t", key);
   printf("val : ");
   print_json_value(obj_cursor, 0);
+  json_value_destroy(json);
 }
 
 void obj_iter_reverse() {
@@ -86,6 +87,7 @@ void obj_iter_reverse() {
   printf("key : %s\t", key);
   printf("val : ");
   print_json_value(obj_cursor, 0);
+  json_value_destroy(json);
 }
 
 int main() {

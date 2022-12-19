@@ -12,8 +12,17 @@ end
 
 add_deps("json_parser")
 
+
 for _, test in ipairs(all_tests()) do
     target(test[1])
     set_kind("binary")
     add_files(test[2])
+    if get_config("memcheck") == true then
+        on_run(function (target)
+            local argv = {}
+            table.insert(argv, target:targetfile())
+            table.insert(argv, "--leak-check=full")
+            os.execv("valgrind", argv)
+        end)
+    end
 end
