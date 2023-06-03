@@ -49,6 +49,14 @@ void obj_duplicate_key() {
   json_value_destroy(json);
 }
 
+void empty_str_create() {
+  json_value_t *json = json_value_create(JSON_VALUE_STRING, "");
+  if (!json) {
+    printf("Create failed");
+  }
+  json_value_destroy(json);
+}
+
 int main() {
   printf("\n-------- create basic value -----\n");
   test_create();
@@ -64,4 +72,6 @@ int main() {
 
   printf("\n-------- create obj duplicate key ------\n");
   obj_duplicate_key(); // support duplicate key
+
+  empty_str_create();
 }
