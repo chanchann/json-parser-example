@@ -1,16 +1,7 @@
 set_project("json-parser")
-set_languages("c")
+set_languages("gnu99")
 
-if is_mode("debug") then
-    set_symbols("debug")
-    set_optimize("none")
-end
-
-if is_mode("release") then
-    set_symbols("hidden")
-    set_optimize("fastest")
-    set_strip("all")
-end
+add_rules("mode.debug", "mode.release")
 
 add_cflags("-g -Wall")
 add_includedirs("./")
